@@ -1,20 +1,20 @@
-﻿using WebApiScalarExample.Models.User;
+﻿using WebApiScalarExample.Endpoints.Interface;
+using WebApiScalarExample.Models.User;
 using WebApiScalarExample.Services;
 
 namespace WebApiScalarExample.Endpoints
 {
-    public static class LoginEndpoints
+    public class LoginEndpoints : IBaseEndpoints
     {
-        public static RouteGroupBuilder MapLoginEndpoints(this IEndpointRouteBuilder app)
+        public void Map(IEndpointRouteBuilder app)
         {
             var group = app.MapGroup("/");
 
             group.MapPost("/login", Login);
 
-            return group;
         }
 
-        private static IResult Login(UserLogin login, LoginService loginService)
+        private IResult Login(UserLogin login, LoginService loginService)
         {
             return Results.Ok(loginService.GetToken(login));
         }

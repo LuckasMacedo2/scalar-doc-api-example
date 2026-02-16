@@ -34,8 +34,7 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-app.MapProductsEndpoints();
-app.MapLoginEndpoints();
+app.MapEndpoints();
 
 app.UseHttpsRedirection();
 
