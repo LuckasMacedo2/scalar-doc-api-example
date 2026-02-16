@@ -8,7 +8,7 @@ namespace WebApiScalarExample.Endpoints
         private const string PRODUCT_NOT_FOUND_MESSAGE = "Product not found!!!";
         public static RouteGroupBuilder MapProductsEndpoints(this IEndpointRouteBuilder app)
         {
-            var group = app.MapGroup("/product");
+            var group = app.MapGroup("/product").RequireAuthorization();
 
             group.MapGet("/", GetAll);
             group.MapGet("/{id:int}", GetById);
